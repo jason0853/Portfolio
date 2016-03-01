@@ -1,0 +1,16 @@
+@charset "UTF-8";
+
+#sns {
+	position: fixed;
+	right: 20px;
+	bottom: 10px;
+	width: 80px;
+	height: 200px;
+	z-index: 2000;
+}
+
+@media all and (max-width: 930px) {
+	#sns {
+		display: none;
+	}
+}

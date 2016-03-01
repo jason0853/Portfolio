@@ -59197,7 +59197,7 @@ ReactDOM.render(
 	),
 	document.getElementById('app')
 );
-},{"./pages/CV.jsx":472,"./pages/Layout.jsx":473,"./pages/Web.jsx":474,"react":463,"react-dom":271,"react-router":299}],465:[function(require,module,exports){
+},{"./pages/CV.jsx":473,"./pages/Layout.jsx":474,"./pages/Web.jsx":475,"react":463,"react-dom":271,"react-router":299}],465:[function(require,module,exports){
 var React = require('react');
 var $ = require('jquery');
 
@@ -59554,6 +59554,85 @@ var Resume = React.createClass({displayName: "Resume",
 module.exports = Resume;
 },{"jquery":26,"react":463,"react-bootstrap":98}],470:[function(require,module,exports){
 var React = require('react');
+var $ = require('jquery');
+var d3 = require('d3');
+
+var SNS = React.createClass({displayName: "SNS",
+
+	componentDidMount: function() {
+		var width = $('#sns').width();
+		var height = $('#sns').height();
+		var dataSet = [
+			{logo: 't', url: 'https://twitter.com/js0853'},
+			{logo: 'f', url: 'https://www.facebook.com/js0853'},
+			{logo: 'i', url: 'https://www.instagram.com/js0853/'}
+		];
+
+		var svg = d3.select('#sns').append('svg')
+					.attr('width', width)
+					.attr('height', height);
+
+		var buttonGroup = svg.selectAll('g')
+							.data(dataSet)
+							.enter()
+							.append('a')
+							.attr("xlink:href", function(d) { return d.url; })
+							.style('text-decoration', 'none')
+							.append('g')
+							.attr('transform', function(d, i) {  return 'translate('+ width / 2 + ',' + (i+3) * 32 + ')'; })
+							.on("mouseover", function(d,i) {
+						        	d3.select(this).selectAll('circle').transition()
+						        		.style('fill', '#565656')
+						            	.ease('elastic')
+						            	.duration('500')
+						            	.attr('r', 17)
+						      	d3.select(this).selectAll('text').transition()
+						      		.style('fill', '#fff')
+						            	.ease('elastic')
+						            	.duration('500')
+						            	.attr('font-size', 25);
+						    	})
+							.on("mouseout", function(d,i) {
+						        	d3.select(this).selectAll('circle').transition()
+						            	.style('fill', '#fff')
+						            	.ease('quad')
+						            	.delay('100')
+						            	.duration('200')
+						            	.attr('r', 12);
+						        	d3.select(this).selectAll('text').transition()
+						        		.style('fill', '#565656')
+						            	.ease('quad')
+						            	.delay('100')
+						            	.duration('200')
+						            	.attr('font-size', 20);
+						  	});
+
+		buttonGroup.append('circle')
+			.attr('r', 12)
+			.attr('fill', '#fff')
+			.attr('cursor', 'pointer');
+
+		buttonGroup.append('text')
+			.attr('x', -2)
+			.attr('y', 7)
+			.attr('font-size', 20)
+			.attr('cursor', 'pointer')
+			.style('fill', '#565656')
+			.text(function(d) { return d.logo; });
+	},
+
+	render: function() {
+		return (
+			React.createElement("div", {id: "sns"}
+			)
+		);
+	}
+
+});
+
+module.exports = SNS;
+},{"d3":1,"jquery":26,"react":463}],471:[function(require,module,exports){
+var React = require('react');
 var Grid = require('react-bootstrap').Grid;
 var Row = require('react-bootstrap').Row;
 var Col = require('react-bootstrap').Col;
@@ -59564,6 +59643,7 @@ var d3 = require('d3');
 var Skill = React.createClass({displayName: "Skill",
 
 	componentDidMount: function() {
+
 		var flag = false;
 		// See D3 margin convention
 		var margin = { top: 20, right: 10, bottom: 100, left: 40}
@@ -59694,23 +59774,25 @@ var Skill = React.createClass({displayName: "Skill",
 
 	render: function() {
 		return (
-			React.createElement(Grid, null, 
+			React.createElement("div", {id: "skill"}, 
+				React.createElement(Grid, null, 
 					React.createElement(Row, {className: "show-grid"}, 
 					  	React.createElement(Col, {xs: 12, mdOffset: 1, md: 10}, 
-					  		React.createElement("div", {id: "skill"}, 
+							React.createElement("div", {className: "skill_section"}, 
 								React.createElement("h3", null, "Skill"), 
 								React.createElement("div", {id: "barChart"})
 							)
 					  	)
 					)
+				)
 			)
-					);
+		);
 	}
 
 });
 
 module.exports = Skill;
-},{"d3":1,"jquery":26,"react":463,"react-bootstrap":98}],471:[function(require,module,exports){
+},{"d3":1,"jquery":26,"react":463,"react-bootstrap":98}],472:[function(require,module,exports){
 var React = require('react');
 var $ = require('jquery');
 
@@ -59743,7 +59825,7 @@ var Video = React.createClass({displayName: "Video",
 });
 
 module.exports = Video;
-},{"jquery":26,"react":463}],472:[function(require,module,exports){
+},{"jquery":26,"react":463}],473:[function(require,module,exports){
 var React = require('react');
 
 var Video = require('../components/Video.jsx');
@@ -59768,10 +59850,11 @@ var CV = React.createClass({displayName: "CV",
 });
 
 module.exports = CV;
-},{"../components/CubeBox.jsx":466,"../components/Resume.jsx":469,"../components/Skill.jsx":470,"../components/Video.jsx":471,"react":463}],473:[function(require,module,exports){
+},{"../components/CubeBox.jsx":466,"../components/Resume.jsx":469,"../components/Skill.jsx":471,"../components/Video.jsx":472,"react":463}],474:[function(require,module,exports){
 var React = require('react');
 
 var Header = require('../components/Header.jsx');
+var SNS = require('../components/SNS.jsx');
 
 
 var Layout = React.createClass({displayName: "Layout",
@@ -59787,7 +59870,8 @@ var Layout = React.createClass({displayName: "Layout",
 		return (
 			React.createElement("div", {id: "layout"}, 
 				React.createElement(Header, {location: this.props.location}), 
-				this.props.children
+				this.props.children, 
+				React.createElement(SNS, null)
 			)
 		);
 	}
@@ -59795,7 +59879,7 @@ var Layout = React.createClass({displayName: "Layout",
 });
 
 module.exports = Layout;
-},{"../components/Header.jsx":467,"react":463}],474:[function(require,module,exports){
+},{"../components/Header.jsx":467,"../components/SNS.jsx":470,"react":463}],475:[function(require,module,exports){
 var React = require('react');
 
 var Web = React.createClass({displayName: "Web",
@@ -59811,4 +59895,4 @@ var Web = React.createClass({displayName: "Web",
 });
 
 module.exports = Web;
-},{"react":463}]},{},[464,465,466,467,468,469,470,471,472,473,474]);
+},{"react":463}]},{},[464,465,466,467,468,469,470,471,472,473,474,475]);

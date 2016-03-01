@@ -83,7 +83,7 @@ module.exports = function(grunt) {
 			// watching sass task
 			sass: {
 				files: 'src/styles/**/*.scss',
-		        	tasks: ['sass', 'concat'],
+		        	tasks: ['sass', 'concat', 'cssmin'],
 		        	options: {
 			      	livereload: true
 			    	}
@@ -92,7 +92,7 @@ module.exports = function(grunt) {
 			react: {
 		        		// files: 'src/components/*.jsx',
 		        		files: 'src/views/**/*',
-		        		tasks: ['browserify'],
+		        		tasks: ['browserify', 'uglify'],
 		        		options: {
 				      		livereload: true
 				    	}
@@ -110,5 +110,5 @@ module.exports = function(grunt) {
  	grunt.loadNpmTasks('grunt-contrib-watch');
  	
  	// registerTasks
- 	grunt.registerTask('default', 	['sass', 'concat', 'browserify', 'connect', 'watch']);
+ 	grunt.registerTask('default', 	['sass', 'concat', 'cssmin', 'browserify', 'uglify', 'connect', 'watch']);
  };

@@ -9,6 +9,7 @@ var d3 = require('d3');
 var Skill = React.createClass({
 
 	componentDidMount: function() {
+
 		var flag = false;
 		// See D3 margin convention
 		var margin = { top: 20, right: 10, bottom: 100, left: 40}
@@ -139,17 +140,19 @@ var Skill = React.createClass({
 
 	render: function() {
 		return (
-			<Grid>
+			<div id="skill">
+				<Grid>
 					<Row className="show-grid">
 					  	<Col xs={12} mdOffset={1} md={10}>
-					  		<div id="skill">
+							<div className="skill_section">
 								<h3>Skill</h3>
 								<div id="barChart"></div>
 							</div>
 					  	</Col>
 					</Row>
-			</Grid>
-					);
+				</Grid>
+			</div>
+		);
 	}
 
 });

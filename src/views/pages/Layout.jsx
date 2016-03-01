@@ -1,6 +1,7 @@
 var React = require('react');
 
 var Header = require('../components/Header.jsx');
+var SNS = require('../components/SNS.jsx');
 
 
 var Layout = React.createClass({
@@ -17,6 +18,7 @@ var Layout = React.createClass({
 			<div id="layout">
 				<Header location={this.props.location} />
 				{this.props.children}
+				<SNS />
 			</div>
 		);
 	}
