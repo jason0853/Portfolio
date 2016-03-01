@@ -1,0 +1,140 @@
+#header {
+  background-color: initial;
+  border: initial;
+}
+#header .navbar-brand {
+  position: absolute;
+  left: 20px;
+  top: 0;
+  padding: 0;
+}
+#header .navbar-nav {
+  width: 100%;
+  text-align: center;
+}
+#header .navbar-nav .gnb {
+  float: none;
+  display: inline-block;
+}
+#header .navbar-nav .gnb a {
+  margin: 13px 0;
+  padding: 0 15px;
+  color: #fff;
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  text-transform: uppercase;
+  font-weight: 400;
+}
+#header .navbar-nav .gnb a span {
+  font-size: 12px;
+  position: relative;
+  display: inline-block;
+  -webkit-transition: -webkit-transform 0.3s;
+  -moz-transition: -moz-transform 0.3s;
+  -o-transition: -o-transform 0.3s;
+  transition: transform 0.3s;
+}
+#header .navbar-nav .gnb a span::before {
+  position: absolute;
+  top: 100%;
+  content: attr(data-hover);
+  font-weight: 700;
+  -webkit-transform: translate3d(0, 0, 0);
+  -moz-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+}
+#header .navbar-nav .gnb a:hover {
+  color: #666;
+}
+#header .navbar-nav .gnb a:hover span {
+  font-weight: bold;
+  -webkit-transform: translateY(-100%);
+  -moz-transform: translateY(-100%);
+  -ms-transform: translateY(-100%);
+  -o-transform: translateY(-100%);
+  transform: translateY(-100%);
+}
+#header .navbar-nav .gnb.selected a {
+  color: #666;
+}
+#header .navbar-nav .gnb.selected a span {
+  font-weight: bold;
+  -webkit-transform: translateY(-100%);
+  -moz-transform: translateY(-100%);
+  -ms-transform: translateY(-100%);
+  -o-transform: translateY(-100%);
+  transform: translateY(-100%);
+}
+#header .navbar-toggle {
+  margin-top: 12px;
+  padding: 5px;
+  border-color: #fff;
+}
+#header .navbar-toggle:hover {
+  background-color: #222;
+}
+#header .navbar-toggle .icon-bar {
+  width: initial;
+  color: #fff;
+  background-color: initial;
+}
+#header .navbar-collapse {
+  width: 400px;
+  margin: 0 auto;
+  border: initial;
+  box-shadow: initial;
+  opacity: 0.9;
+}
+#header #buttonResize {
+  position: absolute;
+  top: 10px;
+  right: 50px;
+  cursor: pointer;
+}
+#header #buttonResize .glyphicon {
+  padding: 5px;
+  -webkit-transition: font-size 0.5s;
+  -moz-transition: font-size 0.5s;
+  -o-transition: font-size 0.5s;
+  transition: font-size 0.5s;
+  border-width: 2px;
+  border-style: solid;
+  border-color: #fff;
+  border-radius: 4px;
+  font-size: 8px;
+  color: #fff;
+}
+#header #buttonResize .glyphicon.glyphicon-resize-small {
+  border-color: #fff;
+  font-size: 15px;
+  color: #fff;
+}
+#header #buttonResize .glyphicon.glyphicon-resize-small:hover {
+  border-color: #333;
+  font-size: 8px;
+  color: #333;
+}
+#header #buttonResize:hover span {
+  border-color: #333;
+  font-size: 15px;
+  color: #333;
+}
+
+/****************************************************************
+*
+*  Set media query
+*
+*****************************************************************/
+@media all and (max-width: 767px) {
+  #header .navbar-collapse {
+    position: absolute;
+    right: 0;
+    top: 50px;
+    width: 100px !important;
+    background: #222;
+  }
+  #header #buttonResize {
+    display: none;
+  }
+}

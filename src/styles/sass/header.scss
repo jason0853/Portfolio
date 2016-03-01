@@ -1,0 +1,170 @@
+@charset 'UTF-8';
+@import "textSlideEffect";
+
+
+#header {
+	background: {
+		color: initial;
+	}
+	border: initial;
+	.navbar-brand {
+		position: absolute;
+		left: 20px;
+		top: 0;
+		padding: 0;
+	}
+	.navbar-nav {
+		width: 100%;
+		text: {
+			align: center;
+		}
+		.gnb {
+			float: none;
+			display: inline-block;
+			a {
+				margin: 13px 0;
+				padding: 0 15px;
+				color: #fff;
+				@include rolling-base;
+				span {
+					font: {
+						size: 12px;
+					}
+					@include rolling-transition(0.3s);
+					&::before {
+						@include rolling-transform(0, 0, 0);
+					}
+				}
+				&:hover {
+					color: #666;
+					span {
+						font: {
+							weight: bold;
+						}
+						@include rolling-transformHover(-100%);
+					}
+				}
+			}
+			&.selected {
+				a {
+					color: #666;
+					span {
+						font: {
+							weight: bold;
+						}
+						@include rolling-transformHover(-100%);	
+					}
+				}
+			}
+		}
+	}
+	.navbar-toggle {
+		margin: {
+			top: 12px;
+		}
+		padding: 5px;
+		border: {
+			color: #fff;
+		}
+		&:hover {
+			background: {
+				color: #222;
+			}
+		}
+
+		.icon-bar {
+			width: initial;
+			color: #fff;
+			background: {
+				color: initial;
+			}
+		}
+	}
+	.navbar-collapse {
+		width: 400px;
+		margin: 0 auto;
+		border: initial;
+		box: {
+			shadow: initial;
+		}
+		opacity: 0.9;
+	}
+	#buttonResize {
+		position: absolute;
+		top: 10px;
+		right: 50px;
+		cursor: pointer;
+
+		.glyphicon {
+			padding: 5px;
+			-webkit-transition: font-size 0.5s;
+			-moz-transition: font-size 0.5s;
+			-o-transition: font-size 0.5s;
+			transition: font-size 0.5s;
+			border: {
+				width: 2px;
+				style: solid;
+				color: #fff;
+				radius: 4px;
+			}
+			font: {
+				size: 8px;
+			}
+			color: #fff;
+
+			&.glyphicon-resize-small {
+				border: {
+					color: #fff;
+				}
+				font: {
+					size: 15px;
+				}
+				color: #fff;
+
+				&:hover {
+					border: {
+						color: #333;
+					}
+					font: {
+						size: 8px;
+					}
+					color: #333;
+				}
+			}
+		}
+	
+		&:hover {
+			span {
+				border: {
+					color: #333;
+				}
+				font: {
+					size: 15px;
+				}
+				color: #333;
+			}
+		}
+	}
+}
+
+
+/****************************************************************
+*
+*  Set media query
+*
+*****************************************************************/
+
+@media all and (max-width: 767px) {
+	#header {
+		.navbar-collapse {
+			position: absolute;
+		    	right: 0;
+		    	top: 50px;
+			width: 100px !important;
+			background: #222;
+		}
+		#buttonResize {
+			display: none;
+		}
+	}
+}
