@@ -1,0 +1,82 @@
+@charset 'UTF-8';
+
+// define spinning
+@mixin cube-keyframes($animationName) {
+	@-webkit-keyframes #{$animationName} {
+		@content;
+	}
+	@-moz-keyframes #{$animationName} {
+		@content;
+	}
+	@-o-keyframes #{$animationName} {
+		@content;
+	}
+	@keyframes #{$animationName} {
+		@content;
+	}	
+}
+
+
+@mixin cube-box($length, $x, $y) {
+	-webkit-perspective: 	$length;
+	-moz-perspective: 		$length;
+	perspective: 			$length;
+
+	-webkit-perspective-origin: 	$x $y;
+	-moz-perspective-origin: 	$x $y;
+	perspective-origin: 			$x $y;
+}
+
+@mixin cube-animate($str) {
+	-webkit-animation: 	#{$str};
+	-moz-animation: 	#{$str};
+	-o-animation: 		#{$str};
+	animation: 			#{$str};
+}
+
+@mixin cube-transition($duration, $effect) {
+	-webkit-transition: 	-webkit-transform $duration $effect;
+	-moz-transition: 	-moz-transform $duration $effect;
+	-o-transition: 		-o-transform $duration $effect;
+	transition: 			transform $duration $effect;
+
+	-webkit-transform-style: 	preserve-3d;
+	-moz-transform-style: 		preserve-3d;
+	transform-style: 			preserve-3d;
+}
+
+@mixin cube-first-side($z) {
+	-webkit-transform: 	translateZ($z);
+	-moz-transform: 	translateZ($z);
+	transform: 			translateZ($z);
+}
+
+@mixin cube-second-side($angleY, $z) {
+	-webkit-transform: 	rotateY($angleY) translateZ($z);
+	-moz-transform: 	rotateY($angleY) translateZ($z);
+	transform: 			rotateY($angleY) translateZ($z);
+}
+
+@mixin cube-third-side($angleY, $z) {
+	-webkit-transform: 	rotateY($angleY) translateZ($z);
+	-moz-transform: 	rotateY($angleY) translateZ($z);
+	transform: 			rotateY($angleY) translateZ($z);
+}
+
+@mixin cube-fourth-side($angleY, $z) {
+	-webkit-transform: 	rotateY($angleY) translateZ($z);
+	-moz-transform: 	rotateY($angleY) translateZ($z);
+	transform: 			rotateY($angleY) translateZ($z);
+}
+
+@mixin cube-fifth-side($angleX, $z, $angle) {
+	-webkit-transform: 	rotateX($angleX) translateZ($z) rotate($angle);
+	-moz-transform: 	rotateX($angleX) translateZ($z) rotate($angle);
+	transform: 			rotateX($angleX) translateZ($z) rotate($angle);
+}
+
+@mixin cube-sixth-side($angleX, $z) {
+	-webkit-transform: 	rotateX($angleX) translateZ($z);
+	-moz-transform: 	rotateX($angleX) translateZ($z);
+	transform: 			rotateX($angleX) translateZ($z);
+}

@@ -1,6 +1,9 @@
 @charset 'UTF-8';
 @import "textSlideEffect";
 
+$menu-font: 'Lato', sans-serif;
+
+
 
 #header {
 	background: {
@@ -13,6 +16,18 @@
 		top: 0;
 		padding: 0;
 	}
+	&.show {
+		opacity: 0.8;
+		background: {
+			color: #111;
+		}
+		-webkit-transition: 		background-color 1000ms linear;
+	    	-moz-transition: 		background-color 1000ms linear;
+	    	-o-transition: 			background-color 1000ms linear;
+	    	-ms-transition: 			background-color 1000ms linear;
+	    	transition: 				background-color 1000ms linear;
+	}
+
 	.navbar-nav {
 		width: 100%;
 		text: {
@@ -29,6 +44,7 @@
 				span {
 					font: {
 						size: 12px;
+						family: $menu-font;
 					}
 					@include rolling-transition(0.3s);
 					&::before {
@@ -146,7 +162,6 @@
 		}
 	}
 }
-
 
 /****************************************************************
 *

@@ -1,0 +1,14 @@
+[
+     	{"language": "HTML5", "percent": 95},
+     	{"language": "CSS3", "percent": 98},
+     	{"language": "Javascript", "percent": 73},
+     	{"language": "jQuery", "percent": 81},
+     	{"language": "React", "percent": 70},
+     	{"language": "d3", "percent": 60},
+     	{"language": "Grunt", "percent": 86},
+     	{"language": "Gulp", "percent": 17},
+     	{"language": "SASS", "percent": 80},
+     	{"language": "Git", "percent": 63},
+     	{"language": "Flux", "percent": 20},
+     	{"language": "Bootstrap", "percent": 33}
+]

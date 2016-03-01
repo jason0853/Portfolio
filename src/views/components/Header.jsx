@@ -37,6 +37,25 @@ var Header = React.createClass({
 	componentDidMount: function() {
 		// Added classname to toggle button
 		$('#header').find('.icon-bar:eq(0)').addClass('glyphicon glyphicon-menu-down');
+
+		// Define #vid element variable
+		var vidElem = document.getElementById('vid');
+		
+		// Occur event after Video is loadaddEventListener
+		vidElem.addEventListener('loadeddata', function() {
+
+			// Add navbar style
+			$(window).scroll(function() {
+				var videoHeight = $('#video').height();
+				var currentPosition = $(window).scrollTop();
+				
+				if (currentPosition > videoHeight) {
+					$('.navbar') .addClass('show');
+				} else {
+					$('.navbar') .removeClass('show');
+				}
+			});
+		}, false);
 	},
 
 	render: function() {

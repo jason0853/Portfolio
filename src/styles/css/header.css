@@ -8,6 +8,15 @@
   top: 0;
   padding: 0;
 }
+#header.show {
+  opacity: 0.8;
+  background-color: #111;
+  -webkit-transition: background-color 1000ms linear;
+  -moz-transition: background-color 1000ms linear;
+  -o-transition: background-color 1000ms linear;
+  -ms-transition: background-color 1000ms linear;
+  transition: background-color 1000ms linear;
+}
 #header .navbar-nav {
   width: 100%;
   text-align: center;
@@ -28,6 +37,7 @@
 }
 #header .navbar-nav .gnb a span {
   font-size: 12px;
+  font-family: "Lato", sans-serif;
   position: relative;
   display: inline-block;
   -webkit-transition: -webkit-transform 0.3s;

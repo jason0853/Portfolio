@@ -59197,7 +59197,7 @@ ReactDOM.render(
 	),
 	document.getElementById('app')
 );
-},{"./pages/CV.jsx":469,"./pages/Layout.jsx":470,"./pages/Web.jsx":471,"react":463,"react-dom":271,"react-router":299}],465:[function(require,module,exports){
+},{"./pages/CV.jsx":472,"./pages/Layout.jsx":473,"./pages/Web.jsx":474,"react":463,"react-dom":271,"react-router":299}],465:[function(require,module,exports){
 var React = require('react');
 var $ = require('jquery');
 
@@ -59280,6 +59280,61 @@ module.exports = ButtonResize;
 var React = require('react');
 var $ = require('jquery');
 
+var CubeBox = React.createClass({displayName: "CubeBox",
+
+	componentDidMount: function() {
+		// Define #vid element variable
+		var vidElem = document.getElementById('vid');
+		
+		// Occur event after Video is loadaddEventListener
+		vidElem.addEventListener('loadeddata', function() {
+			var videoHeight = $('#vid').height();
+			var cubeboxHeight = $('#cubebox').height();
+			
+			function VerticalCenter (videoHeight, cubeboxHeight) {
+
+				// Position vertical center
+				$('#cubebox').css({ 'top': (videoHeight - cubeboxHeight) / 2 });	
+			}
+			
+			// Execute VerticalCenter function
+			VerticalCenter(videoHeight, cubeboxHeight);
+
+			// Trigger resize event
+			$(window).resize(function() {
+			
+				// Define local variable 
+				var videoHeight = $('#video').height();
+				var cubeboxHeight = $('#cubebox').height();
+
+				// Execute VerticalCenter function		
+				VerticalCenter(videoHeight, cubeboxHeight);
+			});
+		}, false);		
+	},
+
+	render: function() {
+		return (
+			React.createElement("div", {id: "cubebox"}, 
+				React.createElement("div", {id: "cube", className: "animate"}, 
+					React.createElement("div", null, "FRONT-END"), 
+					React.createElement("div", null, "FULLSTACK"), 
+					React.createElement("div", null, "UI / UX"), 
+					React.createElement("div", null, "WEB"), 
+					React.createElement("div", null, "APP"), 
+					React.createElement("div", null, "CREATOR")
+				)
+			)
+		);
+	}
+
+});
+
+module.exports = CubeBox;
+},{"jquery":26,"react":463}],467:[function(require,module,exports){
+var React = require('react');
+var $ = require('jquery');
+
 var Navbar = require('react-bootstrap').Navbar;
 var Nav = require('react-bootstrap').Nav;
 
@@ -59316,6 +59371,25 @@ var Header = React.createClass({displayName: "Header",
 	componentDidMount: function() {
 		// Added classname to toggle button
 		$('#header').find('.icon-bar:eq(0)').addClass('glyphicon glyphicon-menu-down');
+
+		// Define #vid element variable
+		var vidElem = document.getElementById('vid');
+		
+		// Occur event after Video is loadaddEventListener
+		vidElem.addEventListener('loadeddata', function() {
+
+			// Add navbar style
+			$(window).scroll(function() {
+				var videoHeight = $('#video').height();
+				var currentPosition = $(window).scrollTop();
+				
+				if (currentPosition > videoHeight) {
+					$('.navbar') .addClass('show');
+				} else {
+					$('.navbar') .removeClass('show');
+				}
+			});
+		}, false);
 	},
 
 	render: function() {
@@ -59352,7 +59426,7 @@ var Header = React.createClass({displayName: "Header",
 });
 
 module.exports = Header;
-},{"./ButtonResize.jsx":465,"./Logo.jsx":467,"jquery":26,"react":463,"react-bootstrap":98,"react-router":299}],467:[function(require,module,exports){
+},{"./ButtonResize.jsx":465,"./Logo.jsx":468,"jquery":26,"react":463,"react-bootstrap":98,"react-router":299}],468:[function(require,module,exports){
 var React = require('react');
 var d3 = require('d3');
 
@@ -59409,7 +59483,234 @@ var Logo = React.createClass({displayName: "Logo",
 });
 
 module.exports = Logo;
-},{"d3":1,"react":463}],468:[function(require,module,exports){
+},{"d3":1,"react":463}],469:[function(require,module,exports){
+var React = require('react');
+var Grid = require('react-bootstrap').Grid;
+var Row = require('react-bootstrap').Row;
+var Col = require('react-bootstrap').Col;
+var $ = require('jquery');
+
+var Resume = React.createClass({displayName: "Resume",
+
+	render: function() {
+		return (
+			React.createElement("div", {id: "resume"}, 
+				React.createElement("h2", null, "Curriculum Vitae"), 
+				React.createElement(Grid, null, 
+					React.createElement(Row, {className: "show-grid"}, 
+					  	React.createElement(Col, {xs: 12, mdOffset: 1, md: 10}, 
+						  	React.createElement("div", {className: "intro"}, 
+						  		React.createElement("h3", null, "Intro"), 
+								"Though I've started working as a front-end developer in late 2013, I'm so interested in build automation & trend library." + ' ' +
+								"Front-end development is evolving with new library and framework these days. I enjoy learning those skills and making web&app application by using them." + ' ' +
+								"One of my strong advantage is to solve problems, searching documents which is written in English. Even if I have been handling javascript language, I've been" + ' ' + 
+								"studying about server-side language and DB and UI/UX interactive design to collaborate with co-workers smoothly, I trust it could help improve work efficiency of work." + ' ' +														
+								"I'm so proud of my job and I love it, since I've worked in IT field. All I can do is to keep my passion for new skills."
+						  	), 
+						  	React.createElement("div", {className: "edu_ex"}, 
+						  		React.createElement("h3", null, "Education & Experience"), 
+						  		React.createElement("div", {className: "part"}, 
+						  			React.createElement("p", {className: "date_place"}, "Feb. 2015 ~ present - NEMUSOFT Corp., Seoul"), 
+									React.createElement("p", null, React.createElement("span", {className: "glyphicon glyphicon-ok-circle"}), " Front-end Developer"), 
+									React.createElement("ul", null, 
+										React.createElement("li", null, "Develop websites of public institutions"), 
+										React.createElement("li", null, "Maintain Comico Webtoon Service"), 
+										React.createElement("li", null, "Responsible for Front-end Development")
+									)
+								), 
+						  		React.createElement("div", {className: "part"}, 
+						  			React.createElement("p", {className: "date_place"}, "Dec. 2013 ~ Jan. 2015 - HelloWorld Corp., Seoul"), 
+									React.createElement("p", null, React.createElement("span", {className: "glyphicon glyphicon-ok-circle"}), " Front-end Developer"), 
+									React.createElement("ul", null, 
+										React.createElement("li", null, "Joined Delivery web & mobile web application and Cargo management system project."), 
+										React.createElement("li", null, "Responsive web design"), 
+										React.createElement("li", null, "Responsible for UI development")
+									)
+								), 
+						  		React.createElement("div", {className: "part"}, 
+									React.createElement("p", {className: "date_place"}, "March. 2012 ~ May. 2013 - HandsKorea Corp., Korea "), 
+									React.createElement("p", null, React.createElement("span", {className: "glyphicon glyphicon-ok-circle"}), " Assistant & consultant"), 
+									React.createElement("ul", null, 
+										React.createElement("li", null, "Handle and send documents about foreign teachers to Korea teachers by mail"), 
+										React.createElement("li", null, "Email useful information to foreign teachers"), 
+										React.createElement("li", null, "Summarize resume and cover letter and translate English into Korean"), 
+										React.createElement("li", null, "Organize the event for HSK teachers")
+									)
+								), 
+						  		React.createElement("div", {className: "part"}, 
+						  			React.createElement("p", {className: "date_place"}, "Mar. 2006 ~ Feb. 2012 - University of Yongin, Korea"), 
+									React.createElement("p", null, React.createElement("span", {className: "glyphicon glyphicon-ok-circle"}), " Bachelor of Art - English")
+								)
+						  	)
+					  	)
+					)
+				)
+			)
+		);
+	}
+
+});
+
+module.exports = Resume;
+},{"jquery":26,"react":463,"react-bootstrap":98}],470:[function(require,module,exports){
+var React = require('react');
+var Grid = require('react-bootstrap').Grid;
+var Row = require('react-bootstrap').Row;
+var Col = require('react-bootstrap').Col;
+var $ = require('jquery');
+var d3 = require('d3');
+
+
+var Skill = React.createClass({displayName: "Skill",
+
+	componentDidMount: function() {
+		var flag = false;
+		// See D3 margin convention
+		var margin = { top: 20, right: 10, bottom: 100, left: 40}
+		      width = $('#barChart').width() - margin.right - margin.left;
+		      height = $('#barChart').height() - margin.top - margin.bottom;
+
+		function DrawBarChart(width, height) {
+			var margin = { top: 20, right: 10, bottom: 100, left: 40}
+		      width = $('#barChart').width() - margin.right - margin.left;
+		      height = $('#barChart').height() - margin.top - margin.bottom;
+
+			// Define SVG
+			var svg = d3.select('#barChart')
+					.append('svg')
+					.attr({
+						'width' : width + margin.right + margin.left,
+						'height' : height + margin.top + margin.bottom
+					})
+					.append('g')
+						.attr('transform', 'translate(' + margin.left + ', ' + margin.right + ')');
+
+			// Define x y scale
+			var xScale = d3.scale.ordinal()
+							.rangeRoundBands([0, width], 0.2, 0.2);
+
+			var yScale = d3.scale.linear()
+							.range([height, 0]);
+			// Define axis
+			var xAxis = d3.svg.axis()
+								.scale(xScale)
+								.orient('bottom');
+
+			var yAxis = d3.svg.axis()
+								.scale(yScale)
+								.orient('left')
+								.tickFormat(function(d) {
+									return d + '%';
+								});
+
+			// Data mapping
+			d3.json('data/barChart.json', function(error, data) {
+				if (error) console.log("Error: data not loaded");
+
+				data.sort(function(a, b) {
+					return b.percent - a. percent;
+				});
+
+				// Specify the domains of the x and y scales.
+				xScale.domain(data.map(function(d) { return d.language; }) );
+				yScale.domain([0, 100]);
+
+				// Draw the bars  
+				svg.selectAll('rect')
+					.data(data)
+					.enter()
+					.append('rect')
+					.attr('height', 0)
+					.attr('y', height)
+					.attr('rx', '5px')
+					.transition().duration(3000)
+					.delay(function(d, i) { return i * 200 })
+					.attr({
+						'x' : function(d) { return xScale(d.language); },
+						'y' : function(d) { return yScale(d.percent); },
+						'width' : xScale.rangeBand(),
+						'height' : function(d) { return height - yScale(d.percent); }
+					})
+					.style('fill', '#666');
+
+				//lable the bars
+				svg.selectAll('text')
+					.data(data)
+					.enter()
+					.append('text')
+					.text(function(d) { return d.percent; })
+					.attr('x', function(d) { return xScale(d.language) + xScale.rangeBand() / 2; })
+					.attr('y', function(d) { return yScale(d.percent) + 17; })
+					.style('fill', 'white')
+					.style('text-anchor', 'middle');
+
+
+				// Draw the xAxis
+				svg.append('g')
+					.attr('class', 'x axis')
+					.attr('transform', 'translate(0, ' + height + ')')
+					.call(xAxis)
+					.selectAll('text')
+					.attr('transform', 'rotate(-60)')
+					.attr('dx', '-.8em')
+					.attr('dy', '-.25em')
+					.style('fill', '#aaa')
+					.style('text-anchor', 'end');
+
+				// Draw the yAxis
+				svg.append('g')
+					.attr('class', 'y axis')
+					.call(yAxis)
+					.style('fill', '#aaa');
+			});
+		}
+
+		function ShowDrawBarChart(width, height) {
+
+			var documentHeight = $(document).height();
+			var startPoint = documentHeight - ($('#barChart').height() + $('.contact').height() + 200);
+			var scrollTop = $(window).scrollTop();
+
+			if (scrollTop >= startPoint && !flag) {
+				DrawBarChart(width, height);
+				flag = true;
+			}
+			if (scrollTop < startPoint && flag) {
+				d3.select('#barChart').select('svg').remove();
+				flag = false;
+			}
+		}
+
+		function ResizeDrawBarChart() {
+			d3.select('#barChart').select('svg').remove();
+			DrawBarChart(width, height);
+		}
+
+
+
+		d3.select(window).on('scroll', ShowDrawBarChart);
+		d3.select(window).on('resize', ResizeDrawBarChart);
+	},
+
+	render: function() {
+		return (
+			React.createElement(Grid, null, 
+					React.createElement(Row, {className: "show-grid"}, 
+					  	React.createElement(Col, {xs: 12, mdOffset: 1, md: 10}, 
+					  		React.createElement("div", {id: "skill"}, 
+								React.createElement("h3", null, "Skill"), 
+								React.createElement("div", {id: "barChart"})
+							)
+					  	)
+					)
+			)
+					);
+	}
+
+});
+
+module.exports = Skill;
+},{"d3":1,"jquery":26,"react":463,"react-bootstrap":98}],471:[function(require,module,exports){
 var React = require('react');
 var $ = require('jquery');
 
@@ -59442,10 +59743,13 @@ var Video = React.createClass({displayName: "Video",
 });
 
 module.exports = Video;
-},{"jquery":26,"react":463}],469:[function(require,module,exports){
+},{"jquery":26,"react":463}],472:[function(require,module,exports){
 var React = require('react');
 
 var Video = require('../components/Video.jsx');
+var CubeBox = require('../components/CubeBox.jsx');
+var Resume = require('../components/Resume.jsx');
+var Skill = require('../components/Skill.jsx');
 
 
 var CV = React.createClass({displayName: "CV",
@@ -59453,7 +59757,10 @@ var CV = React.createClass({displayName: "CV",
 	render: function() {
 		return (
 			React.createElement("div", {id: "cv"}, 
-				React.createElement(Video, null)
+				React.createElement(Video, null), 
+				React.createElement(CubeBox, null), 
+				React.createElement(Resume, null), 
+				React.createElement(Skill, null)
 			)
 		);
 	}
@@ -59461,7 +59768,7 @@ var CV = React.createClass({displayName: "CV",
 });
 
 module.exports = CV;
-},{"../components/Video.jsx":468,"react":463}],470:[function(require,module,exports){
+},{"../components/CubeBox.jsx":466,"../components/Resume.jsx":469,"../components/Skill.jsx":470,"../components/Video.jsx":471,"react":463}],473:[function(require,module,exports){
 var React = require('react');
 
 var Header = require('../components/Header.jsx');
@@ -59488,7 +59795,7 @@ var Layout = React.createClass({displayName: "Layout",
 });
 
 module.exports = Layout;
-},{"../components/Header.jsx":466,"react":463}],471:[function(require,module,exports){
+},{"../components/Header.jsx":467,"react":463}],474:[function(require,module,exports){
 var React = require('react');
 
 var Web = React.createClass({displayName: "Web",
@@ -59504,4 +59811,4 @@ var Web = React.createClass({displayName: "Web",
 });
 
 module.exports = Web;
-},{"react":463}]},{},[464,465,466,467,468,469,470,471]);
+},{"react":463}]},{},[464,465,466,467,468,469,470,471,472,473,474]);

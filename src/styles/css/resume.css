@@ -1,0 +1,39 @@
+#resume {
+  font-family: "Vollkorn", serif;
+  /* barchart style */
+}
+#resume h2 {
+  margin-top: 100px;
+  margin-bottom: 50px;
+  font-weight: bold;
+  text-align: center;
+}
+#resume h3 {
+  font-weight: 500;
+  color: #666;
+  text-align: left;
+}
+#resume .intro {
+  margin-bottom: 50px;
+  text-align: left;
+  line-height: 30px;
+  letter-spacing: 0.8px;
+}
+#resume .edu_ex {
+  margin-bottom: 50px;
+}
+#resume .edu_ex .part .date_place {
+  color: #aaa;
+}
+#resume .edu_ex .part p {
+  color: #666;
+  text-indent: 25px;
+}
+#resume .edu_ex .part p .glyphicon {
+  display: inline;
+  top: 3px;
+}
+#resume .edu_ex .part ul li {
+  color: #666;
+  line-height: 25px;
+}

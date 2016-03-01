@@ -1,0 +1,171 @@
+@charset "UTF-8";
+@import "cubeSpinning";
+
+@include cube-keyframes(spinning) {
+	from {
+		-webkit-transform: 	rotateX(0deg) rotateY(0deg);
+		-moz-transform: 	rotateX(0deg) rotateY(0deg);
+		transform: 			rotateX(0deg) rotateY(0deg);
+	}
+	to {
+		-webkit-transform: 	rotateX(360deg) rotateY(360deg);
+		-moz-transform: 	rotateX(360deg) rotateY(360deg);
+		transform: 			rotateX(360deg) rotateY(360deg);
+	}
+}
+
+#cubebox {
+	position: absolute;
+	top: 0;
+	width: 100%;
+	z-index: 100;
+	@include cube-box(1000px, 50%, 50%);
+	.animate {
+		@include cube-animate('spinning 6s infinite linear');
+	}
+	#cube {
+		width: 200px;
+		height: 200px;
+		margin: 0 auto;
+		@include cube-transition(2s, linear);
+
+		div {
+			position: absolute;
+			width: 160px;
+			height: 160px;
+			border: {
+				width: 1px;
+				style: dashed;
+				color: #fff;
+			}
+			color: #fff;
+			text: {
+				align: center;
+			}
+
+			line: {
+				height: 160px;
+			}
+			
+			&:nth-child(1) {
+				@include cube-first-side(100px);
+			}
+
+			&:nth-child(2) {
+				@include cube-second-side(90deg, 100px);
+			}
+
+			&:nth-child(3) {
+				@include cube-third-side(180deg, 100px);
+			}
+
+			&:nth-child(4) {
+				@include cube-fourth-side(-90deg, 100px);
+			}
+
+			&:nth-child(5) {
+				@include cube-fifth-side(-90deg, 100px, 180deg);
+			}
+
+			&:nth-child(6) {
+				@include cube-sixth-side(90deg, 100px);
+			}
+		}
+	}
+}
+
+/****************************************************************
+*
+*  Set media query
+*
+*****************************************************************/
+
+@media all and (max-width: 640px) {
+	#cubebox {
+		@include cube-box(800px, 50%, 50%);
+		#cube {
+			width: 80px;
+			height: 80px;
+			div {
+				width: 100px;
+				height: 100px;
+				line: {
+					height: 100px;
+				}
+				& {
+					font: {
+						size: 12px;
+					}
+				}
+				&:nth-child(1) {
+					@include cube-first-side(80px);
+				}
+
+				&:nth-child(2) {
+					@include cube-second-side(90deg, 80px);
+				}
+
+				&:nth-child(3) {
+					@include cube-third-side(180deg, 80px);
+				}
+
+				&:nth-child(4) {
+					@include cube-fourth-side(-90deg, 80px);
+				}
+
+				&:nth-child(5) {
+					@include cube-fifth-side(-90deg, 80px, 180deg);
+				}
+
+				&:nth-child(6) {
+					@include cube-sixth-side(90deg, 80px);
+				}
+			}
+		}
+	}
+}
+
+@media all and (max-width: 380px) {
+	#cubebox {
+		@include cube-box(600px, 50%, 50%);
+		#cube {
+			width: 50px;
+			height: 50px;
+			div {
+				width: 70px;
+				height: 70px;
+				line: {
+					height: 70px;
+				}
+				& {
+					font: {
+						size: 10px;
+					}
+				}
+				&:nth-child(1) {
+					@include cube-first-side(50px);
+				}
+
+				&:nth-child(2) {
+					@include cube-second-side(90deg, 50px);
+				}
+
+				&:nth-child(3) {
+					@include cube-third-side(180deg, 50px);
+				}
+
+				&:nth-child(4) {
+					@include cube-fourth-side(-90deg, 50px);
+				}
+
+				&:nth-child(5) {
+					@include cube-fifth-side(-90deg, 50px, 180deg);
+				}
+
+				&:nth-child(6) {
+					@include cube-sixth-side(90deg, 50px);
+				}
+			}
+		}
+	}
+}

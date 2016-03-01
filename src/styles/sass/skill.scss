@@ -1,0 +1,36 @@
+@charset 'UTF-8';
+
+#skill {
+	float: left;
+	overflow: hidden;
+	position: relative;
+	width: 100%;
+	height: 0;
+	padding-bottom: 100%;
+	#barChart {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		svg {
+			display: block;
+			margin: {
+				left: auto;
+				right: auto;
+			}
+		}
+	}
+	/* barchart style */
+	text {
+		font: {
+			size: 11px;
+		}
+	}
+
+	.axis {
+		path, line {
+			fill: none;
+			stroke: #aaa;
+			shape-rendering: crishpEdges;
+		}
+	}
+}
