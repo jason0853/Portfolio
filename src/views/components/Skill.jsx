@@ -111,21 +111,23 @@ var Skill = React.createClass({
 			});
 		}
 
-		function ShowDrawBarChart(width, height) {
+		DrawBarChart(width, height);
 
-			var documentHeight = $(document).height();
-			var startPoint = documentHeight - ($('#barChart').height() + $('.contact').height() + 200);
-			var scrollTop = $(window).scrollTop();
+		// function ShowDrawBarChart(width, height) {
 
-			if (scrollTop >= startPoint && !flag) {
-				DrawBarChart(width, height);
-				flag = true;
-			}
-			if (scrollTop < startPoint && flag) {
-				d3.select('#barChart').select('svg').remove();
-				flag = false;
-			}
-		}
+		// 	var documentHeight = $(document).height();
+		// 	var startPoint = documentHeight - ($('#barChart').height() + $('.contact').height() + 200);
+		// 	var scrollTop = $(window).scrollTop();
+
+		// 	if (scrollTop >= startPoint && !flag) {
+		// 		DrawBarChart(width, height);
+		// 		flag = true;
+		// 	}
+		// 	if (scrollTop < startPoint && flag) {
+		// 		d3.select('#barChart').select('svg').remove();
+		// 		flag = false;
+		// 	}
+		// }
 
 		function ResizeDrawBarChart() {
 			d3.select('#barChart').select('svg').remove();
@@ -133,8 +135,7 @@ var Skill = React.createClass({
 		}
 
 
-
-		d3.select(window).on('scroll', ShowDrawBarChart);
+		// d3.select(window).on('scroll', ShowDrawBarChart);
 		d3.select(window).on('resize', ResizeDrawBarChart);
 	},
 
@@ -144,7 +145,7 @@ var Skill = React.createClass({
 				<Grid>
 					<Row className="show-grid">
 					  	<Col xs={12} mdOffset={1} md={10}>
-							<div className="skill_section">
+							<div className="skill_chart">
 								<h3>Skill</h3>
 								<div id="barChart"></div>
 							</div>

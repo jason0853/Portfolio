@@ -59197,7 +59197,7 @@ ReactDOM.render(
 	),
 	document.getElementById('app')
 );
-},{"./pages/CV.jsx":473,"./pages/Layout.jsx":474,"./pages/Web.jsx":475,"react":463,"react-dom":271,"react-router":299}],465:[function(require,module,exports){
+},{"./pages/CV.jsx":474,"./pages/Layout.jsx":475,"./pages/Web.jsx":476,"react":463,"react-dom":271,"react-router":299}],465:[function(require,module,exports){
 var React = require('react');
 var $ = require('jquery');
 
@@ -59371,25 +59371,6 @@ var Header = React.createClass({displayName: "Header",
 	componentDidMount: function() {
 		// Added classname to toggle button
 		$('#header').find('.icon-bar:eq(0)').addClass('glyphicon glyphicon-menu-down');
-
-		// Define #vid element variable
-		var vidElem = document.getElementById('vid');
-		
-		// Occur event after Video is loadaddEventListener
-		vidElem.addEventListener('loadeddata', function() {
-
-			// Add navbar style
-			$(window).scroll(function() {
-				var videoHeight = $('#video').height();
-				var currentPosition = $(window).scrollTop();
-				
-				if (currentPosition > videoHeight) {
-					$('.navbar') .addClass('show');
-				} else {
-					$('.navbar') .removeClass('show');
-				}
-			});
-		}, false);
 	},
 
 	render: function() {
@@ -59485,6 +59466,31 @@ var Logo = React.createClass({displayName: "Logo",
 module.exports = Logo;
 },{"d3":1,"react":463}],469:[function(require,module,exports){
 var React = require('react');
+
+var Picture = React.createClass({displayName: "Picture",
+
+	render: function() {
+
+		return (
+			React.createElement("div", {className: "row pictureLIst"}, 
+			this.props.images.map(function (image) {
+				return (
+					React.createElement("div", {className: "col-xs-12 col-sm-4"}, 
+					    	React.createElement("a", {className: "thumbnail no-padding"}, 
+					     		React.createElement("img", {src: image.koreatcs, alt: "", width: "100%"})
+					    	)
+					)
+				);
+			})
+			)
+		);
+	}
+
+});
+
+module.exports = Picture;
+},{"react":463}],470:[function(require,module,exports){
+var React = require('react');
 var Grid = require('react-bootstrap').Grid;
 var Row = require('react-bootstrap').Row;
 var Col = require('react-bootstrap').Col;
@@ -59552,7 +59558,7 @@ var Resume = React.createClass({displayName: "Resume",
 });
 
 module.exports = Resume;
-},{"jquery":26,"react":463,"react-bootstrap":98}],470:[function(require,module,exports){
+},{"jquery":26,"react":463,"react-bootstrap":98}],471:[function(require,module,exports){
 var React = require('react');
 var $ = require('jquery');
 var d3 = require('d3');
@@ -59631,7 +59637,7 @@ var SNS = React.createClass({displayName: "SNS",
 });
 
 module.exports = SNS;
-},{"d3":1,"jquery":26,"react":463}],471:[function(require,module,exports){
+},{"d3":1,"jquery":26,"react":463}],472:[function(require,module,exports){
 var React = require('react');
 var Grid = require('react-bootstrap').Grid;
 var Row = require('react-bootstrap').Row;
@@ -59745,21 +59751,23 @@ var Skill = React.createClass({displayName: "Skill",
 			});
 		}
 
-		function ShowDrawBarChart(width, height) {
+		DrawBarChart(width, height);
 
-			var documentHeight = $(document).height();
-			var startPoint = documentHeight - ($('#barChart').height() + $('.contact').height() + 200);
-			var scrollTop = $(window).scrollTop();
+		// function ShowDrawBarChart(width, height) {
 
-			if (scrollTop >= startPoint && !flag) {
-				DrawBarChart(width, height);
-				flag = true;
-			}
-			if (scrollTop < startPoint && flag) {
-				d3.select('#barChart').select('svg').remove();
-				flag = false;
-			}
-		}
+		// 	var documentHeight = $(document).height();
+		// 	var startPoint = documentHeight - ($('#barChart').height() + $('.contact').height() + 200);
+		// 	var scrollTop = $(window).scrollTop();
+
+		// 	if (scrollTop >= startPoint && !flag) {
+		// 		DrawBarChart(width, height);
+		// 		flag = true;
+		// 	}
+		// 	if (scrollTop < startPoint && flag) {
+		// 		d3.select('#barChart').select('svg').remove();
+		// 		flag = false;
+		// 	}
+		// }
 
 		function ResizeDrawBarChart() {
 			d3.select('#barChart').select('svg').remove();
@@ -59767,8 +59775,7 @@ var Skill = React.createClass({displayName: "Skill",
 		}
 
 
-
-		d3.select(window).on('scroll', ShowDrawBarChart);
+		// d3.select(window).on('scroll', ShowDrawBarChart);
 		d3.select(window).on('resize', ResizeDrawBarChart);
 	},
 
@@ -59778,7 +59785,7 @@ var Skill = React.createClass({displayName: "Skill",
 				React.createElement(Grid, null, 
 					React.createElement(Row, {className: "show-grid"}, 
 					  	React.createElement(Col, {xs: 12, mdOffset: 1, md: 10}, 
-							React.createElement("div", {className: "skill_section"}, 
+							React.createElement("div", {className: "skill_chart"}, 
 								React.createElement("h3", null, "Skill"), 
 								React.createElement("div", {id: "barChart"})
 							)
@@ -59792,7 +59799,7 @@ var Skill = React.createClass({displayName: "Skill",
 });
 
 module.exports = Skill;
-},{"d3":1,"jquery":26,"react":463,"react-bootstrap":98}],472:[function(require,module,exports){
+},{"d3":1,"jquery":26,"react":463,"react-bootstrap":98}],473:[function(require,module,exports){
 var React = require('react');
 var $ = require('jquery');
 
@@ -59809,6 +59816,25 @@ var Video = React.createClass({displayName: "Video",
 				$('#video').find('video').remove();
 				$('#video').append('<img src="img/main_video.png" alt="Main Photo" width="100%" />');		    
 		}
+
+		// Define #vid element variable
+		var vidElem = document.getElementById('vid');
+		
+		// Occur event after Video is loadaddEventListener
+		vidElem.addEventListener('loadeddata', function() {
+
+			// Add navbar style
+			$(window).scroll(function() {
+				var videoHeight = $('#video').height();
+				var currentPosition = $(window).scrollTop();
+				
+				if (currentPosition > videoHeight) {
+					$('.navbar') .addClass('show');
+				} else {
+					$('.navbar') .removeClass('show');
+				}
+			});
+		}, false);
 	},
 
 	render: function() {
@@ -59825,7 +59851,7 @@ var Video = React.createClass({displayName: "Video",
 });
 
 module.exports = Video;
-},{"jquery":26,"react":463}],473:[function(require,module,exports){
+},{"jquery":26,"react":463}],474:[function(require,module,exports){
 var React = require('react');
 
 var Video = require('../components/Video.jsx');
@@ -59850,7 +59876,7 @@ var CV = React.createClass({displayName: "CV",
 });
 
 module.exports = CV;
-},{"../components/CubeBox.jsx":466,"../components/Resume.jsx":469,"../components/Skill.jsx":471,"../components/Video.jsx":472,"react":463}],474:[function(require,module,exports){
+},{"../components/CubeBox.jsx":466,"../components/Resume.jsx":470,"../components/Skill.jsx":472,"../components/Video.jsx":473,"react":463}],475:[function(require,module,exports){
 var React = require('react');
 
 var Header = require('../components/Header.jsx');
@@ -59879,15 +59905,195 @@ var Layout = React.createClass({displayName: "Layout",
 });
 
 module.exports = Layout;
-},{"../components/Header.jsx":467,"../components/SNS.jsx":470,"react":463}],475:[function(require,module,exports){
+},{"../components/Header.jsx":467,"../components/SNS.jsx":471,"react":463}],476:[function(require,module,exports){
 var React = require('react');
+var $ = require('jquery');
+
+var Picture = require('../components/Picture.jsx');
 
 var Web = React.createClass({displayName: "Web",
 
+	componentDidMount: function() {
+		var imgSrc = {
+			"Korea TCS": [{
+				"data": "./img/koreatcs/koreatcs_01.png"
+			}, {
+				"data": "./img/koreatcs/koreatcs_02.png"
+			}, {
+				"data": "./img/koreatcs/koreatcs_03.png"
+			}, {
+				"data": "./img/koreatcs/koreatcs_04.png"
+			}, {
+				"data": "./img/koreatcs/koreatcs_05.png"
+			}, {
+				"data": "./img/koreatcs/koreatcs_06.png"
+			}], 
+			"ChulApp": [{
+				"data": "./img/chulapp/chulapp_01.png"
+			}, {
+				"data": "./img/chulapp/chulapp_02.png"
+			}, {
+				"data": "./img/chulapp/chulapp_03.png"
+			}, {
+				"data": "./img/chulapp/chulapp_04.png"
+			}, {
+				"data": "./img/chulapp/chulapp_05.png"
+			}, {
+				"data": "./img/chulapp/chulapp_06.png"
+			}],
+			"Mobile Store": [{
+				"data": "./img/mobilestore/mobile_chulapp_01.png"
+			}, {
+				"data": "./img/mobilestore/mobile_chulapp_02.png"
+			}, {
+				"data": "./img/mobilestore/mobile_chulapp_03.png"
+			}, {
+				"data": "./img/mobilestore/mobile_chulapp_04.png"
+			}, {
+				"data": "./img/mobilestore/mobile_chulapp_05.png"
+			}, {
+				"data": "./img/mobilestore/mobile_chulapp_06.png"
+			}],
+			"Seoul National Univ Admin": [{
+				"data": "./img/snu/SNU_01.png"
+			}, {
+				"data": "./img/snu/SNU_02.png"
+			}, {
+				"data": "./img/snu/SNU_03.png"
+			}, {
+				"data": "./img/snu/SNU_04.png"
+			}, {
+				"data": "./img/snu/SNU_05.png"
+			}, {
+				"data": "./img/snu/SNU_06.png"
+			}],
+			"Comico Webtoon": [{
+				"data": "./img/comico/comico_01.png"
+			}, {
+				"data": "./img/comico/comico_02.png"
+			}, {
+				"data": "./img/comico/comico_03.png"
+			}, {
+				"data": "./img/comico/comico_04.png"
+			}, {
+				"data": "./img/comico/comico_05.png"
+			}, {
+				"data": "./img/comico/comico_06.png"
+			}],
+			"homepage_01": [{
+				"data": "./img/dongjak_jinro_center/dongjak_jinro_center_01.png"
+			}, {
+				"data": "./img/dongjak_jinro_center/dongjak_jinro_center_02.png"
+			}, {
+				"data": "./img/dongjak_jinro_center/dongjak_jinro_center_03.png"
+			}, {
+				"data": "./img/dongjak_jinro_center/dongjak_jinro_center_04.png"
+			}, {
+				"data": "./img/dongjak_jinro_center/dongjak_jinro_center_05.png"
+			}, {
+				"data": "./img/dongjak_jinro_center/dongjak_jinro_center_06.png"
+			}],
+			"homepage_02": [{
+				"data": "./img/techno_doctor/techno_doctor_01.png"
+			}, {
+				"data": "./img/techno_doctor/techno_doctor_02.png"
+			}, {
+				"data": "./img/techno_doctor/techno_doctor_03.png"
+			}, {
+				"data": "./img/techno_doctor/techno_doctor_04.png"
+			}, {
+				"data": "./img/techno_doctor/techno_doctor_05.png"
+			}, {
+				"data": "./img/techno_doctor/techno_doctor_06.png"
+			}],
+		}
+
+		// image show when menu is clicked
+		$('.list-group-item').each(function(index, el) {
+			$(this).on('click', function() {
+				$('.thumbnail img').fadeOut(2000, function() {
+					$('.list-group-item').removeClass('selected');
+					$(this).addClass('selected');
+					$.each(imgSrc, function(key, data) {
+						if ( el.innerHTML == key ) {
+							$.each(data, function(imgIndex, data) {
+								$('.thumbnail img').eq(imgIndex).attr('src', data.data).fadeIn(1000);
+							});
+						}
+					});
+				});
+			});
+		});
+
+		// enlarge image
+		$('.thumbnail img').on('click', function() {
+			$('.dim').show();
+			$('.popup').show();
+			var imgUrl = $(this).attr('src');
+			$('.popup').append('<img src="' + imgUrl + '" width="100%" height="100%" />');
+		});
+
+		$('.closeBtn').on('click', function() {
+			$('.dim').hide();
+			$('.popup').hide();
+			$('.popup img').remove();
+		});
+
+		function AlignCenter() {
+			var windowWidth = $(window).width();
+			var windowHeight = $(window).height();
+			var width = $('.popup').width();
+			var height = $('.popup').height();
+
+			$('.popup').css({ 'left': (windowWidth -  width) / 2, 'top': (windowHeight - height) / 2 });
+		}
+
+		AlignCenter();
+
+		$(window).resize(function() {
+			AlignCenter();	
+		});
+
+	},
+
 	render: function() {
+		var pictures = [{
+			"koreatcs" : "./img/koreatcs/koreatcs_01.png",
+		}, {
+			"koreatcs" : "./img/koreatcs/koreatcs_02.png",	
+		}, {
+			"koreatcs" : "./img/koreatcs/koreatcs_03.png",	
+		}, {
+			"koreatcs" : "./img/koreatcs/koreatcs_04.png",	
+		}, {
+			"koreatcs" : "./img/koreatcs/koreatcs_05.png",	
+		}, {
+			"koreatcs" : "./img/koreatcs/koreatcs_06.png",
+		}];
 		return (
-			React.createElement("div", {id: "web"}, 
-				React.createElement("h2", null, "WEB")
+			React.createElement("div", {id: "web", className: "container"}, 
+				React.createElement("div", {className: "row"}, 
+					React.createElement("div", {className: "col-sm-9"}, 
+						React.createElement(Picture, {key: pictures.id, images: pictures})
+					), 
+					React.createElement("div", {className: "quickMenu col-sm-3"}, 
+						React.createElement("ul", {className: "list-group"}, 
+						  	React.createElement("li", {className: "list-group-item selected"}, "Korea TCS"), 
+						  	React.createElement("li", {className: "list-group-item"}, "ChulApp"), 
+						  	React.createElement("li", {className: "list-group-item"}, "Mobile Store"), 
+						  	React.createElement("li", {className: "list-group-item"}, "Seoul National Univ Admin"), 
+						  	React.createElement("li", {className: "list-group-item"}, "Comico Webtoon"), 
+						  	React.createElement("li", {className: "list-group-item"}, "homepage_01"), 
+						  	React.createElement("li", {className: "list-group-item"}, "homepage_02")
+						)
+					)
+				), 
+				React.createElement("div", {className: "dim"}), 
+				React.createElement("div", {className: "popup"}, 
+					
+					React.createElement("a", {className: "closeBtn"}, "X")
+				)
+				
 			)	
 		);
 	}
@@ -59895,4 +60101,4 @@ var Web = React.createClass({displayName: "Web",
 });
 
 module.exports = Web;
-},{"react":463}]},{},[464,465,466,467,468,469,470,471,472,473,474,475]);
+},{"../components/Picture.jsx":469,"jquery":26,"react":463}]},{},[464,465,466,467,468,469,470,471,472,473,474,475,476]);

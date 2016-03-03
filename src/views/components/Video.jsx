@@ -14,6 +14,25 @@ var Video = React.createClass({
 				$('#video').find('video').remove();
 				$('#video').append('<img src="img/main_video.png" alt="Main Photo" width="100%" />');		    
 		}
+
+		// Define #vid element variable
+		var vidElem = document.getElementById('vid');
+		
+		// Occur event after Video is loadaddEventListener
+		vidElem.addEventListener('loadeddata', function() {
+
+			// Add navbar style
+			$(window).scroll(function() {
+				var videoHeight = $('#video').height();
+				var currentPosition = $(window).scrollTop();
+				
+				if (currentPosition > videoHeight) {
+					$('.navbar') .addClass('show');
+				} else {
+					$('.navbar') .removeClass('show');
+				}
+			});
+		}, false);
 	},
 
 	render: function() {

@@ -1,4 +1,4 @@
-#skill .skill_section {
+#skill .skill_chart {
   float: left;
   overflow: hidden;
   position: relative;
@@ -7,26 +7,26 @@
   padding-bottom: 100%;
   /* barchart style */
 }
-#skill .skill_section h3 {
+#skill .skill_chart h3 {
   font-weight: 500;
   font-family: "Vollkorn", serif;
   color: #666;
   text-align: left;
 }
-#skill .skill_section #barChart {
+#skill .skill_chart #barChart {
   position: absolute;
   width: 100%;
   height: 100%;
 }
-#skill .skill_section #barChart svg {
+#skill .skill_chart #barChart svg {
   display: block;
   margin-left: auto;
   margin-right: auto;
 }
-#skill .skill_section text {
+#skill .skill_chart text {
   font-size: 11px;
 }
-#skill .skill_section .axis path, #skill .skill_section .axis line {
+#skill .skill_chart .axis path, #skill .skill_chart .axis line {
   fill: none;
   stroke: #aaa;
   shape-rendering: crishpEdges;

@@ -423,7 +423,7 @@ body {
   line-height: 25px;
 }
 
-#skill .skill_section {
+#skill .skill_chart {
   float: left;
   overflow: hidden;
   position: relative;
@@ -432,30 +432,31 @@ body {
   padding-bottom: 100%;
   /* barchart style */
 }
-#skill .skill_section h3 {
+#skill .skill_chart h3 {
   font-weight: 500;
   font-family: "Vollkorn", serif;
   color: #666;
   text-align: left;
 }
-#skill .skill_section #barChart {
+#skill .skill_chart #barChart {
   position: absolute;
   width: 100%;
   height: 100%;
 }
-#skill .skill_section #barChart svg {
+#skill .skill_chart #barChart svg {
   display: block;
   margin-left: auto;
   margin-right: auto;
 }
-#skill .skill_section text {
+#skill .skill_chart text {
   font-size: 11px;
 }
-#skill .skill_section .axis path, #skill .skill_section .axis line {
+#skill .skill_chart .axis path, #skill .skill_chart .axis line {
   fill: none;
   stroke: #aaa;
   shape-rendering: crishpEdges;
 }
+
 
 #sns {
   position: fixed;
@@ -479,4 +480,70 @@ body {
 #video video::-webkit-media-controls-start-playback-button {
   display: none !important;
   -webkit-appearance: none;
+}
+
+#web {
+  padding-top: 100px;
+}
+
+.no-padding {
+  padding: 0 !important;
+}
+
+.no-margin {
+  margin: 0 !important;
+}
+
+.thumbnail:hover {
+  opacity: 0.8;
+  cursor: pointer;
+  border: 1px solid #fff !important;
+  border-radius: 0;
+}
+
+.list-group-item:hover,
+.list-group-item.selected {
+  background: #ddd;
+  cursor: pointer;
+}
+
+.dim {
+  display: none;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: black;
+  opacity: 0.3;
+  z-index: 1000;
+}
+
+.popup {
+  display: none;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  max-width: 800px;
+  height: 500px;
+  border: 1px solid #ddd;
+  background: #fff;
+  z-index: 1500;
+}
+.popup .closeBtn {
+  position: absolute;
+  right: 15px;
+  top: 5px;
+  float: right;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+@media all and (max-width: 767px) {
+  .quickMenu {
+    position: fixed;
+    bottom: 100px;
+    right: -15px;
+  }
 }
